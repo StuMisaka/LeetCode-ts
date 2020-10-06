@@ -15,7 +15,7 @@
 // 链接：https://leetcode-cn.com/problems/pond-sizes-lcci
 
 
-//BFS
+//DFS
 function pondSizes(land: number[][]): number[] {
   let res: number[] = [];
   let count: number;

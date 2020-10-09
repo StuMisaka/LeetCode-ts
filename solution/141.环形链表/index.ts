@@ -71,3 +71,17 @@ function hasCycle(head: ListNode | null): boolean {
   } 
   return false
 };
+
+//快慢指针 龟兔赛跑算法
+function hasCycle(head: ListNode | null): boolean {
+  let slow: ListNode | null = head;
+  let fast: ListNode | null = head ? head.next : null;
+  while(slow && fast){
+    if(slow == fast){
+      return true
+    }
+    slow = slow.next;
+    fast = fast.next? fast.next.next : null;
+  }
+  return false
+};

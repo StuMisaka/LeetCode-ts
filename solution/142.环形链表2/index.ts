@@ -42,6 +42,7 @@
  * }
  */
 
+//哈希表
 function detectCycle(head: ListNode | null): ListNode | null {
   let map = new Set();
   let node: ListNode | null = head;
@@ -54,3 +55,27 @@ function detectCycle(head: ListNode | null): ListNode | null {
   }
   return null
 };
+
+//快慢双指针
+// 当发现slow 与 fast 相遇时，
+// 我们再额外使用一个指针 ptr。起始，它指向链表头部；随后，它和 slow 每次向后移动一个位置。最终，它们会在入环点相遇
+
+function detectCycle2(head: ListNode | null): ListNode | null {
+  let slow: ListNode | null = head;
+  let fast: ListNode | null = head;
+  let ptr: ListNode | null = head;
+  while(slow && fast && fast.next){
+    slow = slow.next;
+    fast = fast.next.next;
+    if(slow == fast){
+      while(ptr != slow && ptr && slow){
+        slow = slow.next;
+        ptr = ptr.next;
+      }
+      return ptr
+    }
+  }
+  return null
+}
+
+
